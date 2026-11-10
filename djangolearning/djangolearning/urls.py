@@ -21,9 +21,11 @@ from djangolearning.views import aboutus, detail
 from djangolearning import views
 
 urlpatterns = [
-    path('', views.homepage, name='root'),
+    path('', views.index, name='root'),
     path('admin/', admin.site.urls),
-    path('aboutus/', aboutus),
-    path('about-detail/<int:id>/',detail, name='detail'),
-    path('home-page/', views.homepage, name='homepage'),
+    path('aboutus/', aboutus, name='aboutus'),
+    path('about-detail/<int:id>/', detail, name='detail'),
+    path('homepage/', views.homepage, name='homepage'),
+    path('contact/', views.contact, name='contact'),
+    path('services/', views.services, name='services'),
 ]

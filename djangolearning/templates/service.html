@@ -1,55 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Our Services</title>
-</head>
-<body>
+{% block title %}Academic Programs | Advards Model College{% endblock %}
+{% block meta_description %}Explore the learning pathways and academic areas at Advards Model College.{% endblock %}
 
-    <header class="site-header">
-        <a class="site-brand" href="/">My Website</a>
-        <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
-        <nav class="site-menu" id="site-menu" aria-label="Main navigation">
-            <a href="/">Home</a>
-            <a href="/aboutus/">About</a>
-        </nav>
-    </header>
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-inner">
+        <p class="eyebrow"><span></span> Academic programs</p>
+        <h1>Find your interests.<br><em>Build your future.</em></h1>
+        <p>Explore a broad range of subjects and discover the ideas, skills, and questions that inspire you.</p>
+        <div class="breadcrumb"><a href="{% url 'root' %}">Home</a><span aria-hidden="true">/</span><span>Programs</span></div>
+    </div>
+</section>
 
-    <main class="site-main">
-        <h1>Our Services</h1>
-        <div class="site-grid">
-            <article class="site-card">
-                <img src="{% static 'images/safti-site.jpg' %}" alt="Responsive website example">
-                <h2>Web Development</h2>
-                <p>We develop responsive websites.</p>
-            </article>
-
-            <article class="site-card">
-                <img src="{% static 'images/camera.png' %}" alt="Camera representing creative design">
-                <h2>Frontend Development</h2>
-                <p>We create user-friendly interfaces using HTML, CSS and React.</p>
-            </article>
-
-            <article class="site-card">
-                <img src="{% static 'images/chat.jpg' %}" alt="Chat interface example">
-                <h2>Backend Development</h2>
-                <p>We develop backend applications using Python and Django.</p>
-            </article>
-
-            <article class="site-card">
-                <img src="{% static 'images/crm-profile.jpg' %}" alt="Customer profile interface">
-                <h2>Business Applications</h2>
-                <p>We build practical tools to support your team's workflow.</p>
-            </article>
+<section class="container section-space">
+    <div class="section-heading">
+        <p class="eyebrow eyebrow-dark"><span></span> A foundation for what comes next</p>
+        <h2>Many interests.<br><em>One strong foundation.</em></h2>
+        <p class="section-description">Our academic areas invite students to explore widely, build essential knowledge, and find the path that fits their ambitions.</p>
+    </div>
+    <div class="program-image-panel">
+        <img src="{% static 'images/safti-site.jpg' %}" alt="A group collaborating on a shared project">
+        <div>
+            <p class="program-index">LEARNING THROUGH COLLABORATION</p>
+            <h3>Knowledge grows when ideas are shared.</h3>
+            <p>Explore subjects, exchange perspectives, and build the confidence to take on new challenges.</p>
         </div>
-    </main>
+    </div>
+    <div class="program-detail-grid">
+        <article class="program-detail-card"><span class="detail-index">01</span><div class="detail-icon" aria-hidden="true">∑</div><p class="program-index">DISCOVERY &amp; INQUIRY</p><h3>Science and mathematics</h3><p>Strengthen analytical thinking and investigate the principles that explain our changing world.</p></article>
+        <article class="program-detail-card"><span class="detail-index">02</span><div class="detail-icon" aria-hidden="true">Aa</div><p class="program-index">PEOPLE &amp; IDEAS</p><h3>Arts and humanities</h3><p>Explore language, culture, history, and expression while learning to communicate with clarity.</p></article>
+        <article class="program-detail-card"><span class="detail-index">03</span><div class="detail-icon" aria-hidden="true">↗</div><p class="program-index">IDEAS &amp; OPPORTUNITY</p><h3>Commerce and enterprise</h3><p>Develop an understanding of business, decision-making, and how ideas create value.</p></article>
+        <article class="program-detail-card"><span class="detail-index">04</span><div class="detail-icon" aria-hidden="true">⌘</div><p class="program-index">SKILLS FOR TOMORROW</p><h3>Digital learning</h3><p>Build digital confidence, creative problem-solving, and an adaptable approach to new tools.</p></article>
+    </div>
+</section>
 
-    <footer class="site-footer">© <span data-current-year></span> My Website</footer>
-    <script src="{% static 'js/site.js' %}" defer></script>
-</body>
-</html>
-  
+<section class="program-callout">
+    <div class="container callout-inner">
+        <div><p class="eyebrow"><span></span> Take the next step</p><h2>Curious about a program?</h2><p>Get in touch with the college to learn more about learning opportunities and admissions.</p></div>
+        <a class="button button-gold" href="{% url 'contact' %}">Contact the college <span aria-hidden="true">→</span></a>
+    </div>
+</section>
+{% endblock %}

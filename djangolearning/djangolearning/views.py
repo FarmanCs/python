@@ -20,9 +20,18 @@ def homepage(request):
 
     return render(request, 'homepage.html', data)
 
+def index(request):
+    return render(request, 'index.html')
+
+def services(request):
+    return render(request, 'service.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
 
 def aboutus(request):
-    return HttpResponse("This is about us page")
+    return render(request, 'aboutus.html')
 
 
 def detail(request, id):

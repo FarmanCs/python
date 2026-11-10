@@ -1,48 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Contact Us</title>
-</head>
-<body>
+{% block title %}Contact &amp; Admissions | Advards Model College{% endblock %}
+{% block meta_description %}Contact Advards Model College with your questions about the college and admissions.{% endblock %}
 
-    <header class="site-header">
-        <a class="site-brand" href="/">My Website</a>
-        <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
-        <nav class="site-menu" id="site-menu" aria-label="Main navigation">
-            <a href="/">Home</a>
-            <a href="/aboutus/">About</a>
-        </nav>
-    </header>
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-inner">
+        <p class="eyebrow"><span></span> Contact and admissions</p>
+        <h1>We’re here to<br><em>help you take the next step.</em></h1>
+        <p>Have a question about the college or learning opportunities? Send us a message using the form below.</p>
+        <div class="breadcrumb"><a href="{% url 'root' %}">Home</a><span aria-hidden="true">/</span><span>Contact</span></div>
+    </div>
+</section>
 
-    <main class="site-main">
-        <section class="site-panel">
-            <h1>Contact Us</h1>
-            <p>Feel free to contact us.</p>
-            <img class="site-card-image" src="{% static 'images/login.png' %}" alt="Contact support">
-
-            <form class="site-form">
-                <label>Name
-                    <input type="text" name="name" placeholder="Enter your name" required>
-                </label>
-                <label>Email
-                    <input type="email" name="email" placeholder="Enter your email" required>
-                </label>
-                <label>Message
-                    <textarea name="message" placeholder="Write your message" required></textarea>
-                </label>
-                <button class="site-button" type="submit">Send Message</button>
-                <p data-form-message aria-live="polite"></p>
-            </form>
-        </section>
-    </main>
-
-    <footer class="site-footer">© <span data-current-year></span> My Website</footer>
-    <script src="{% static 'js/site.js' %}" defer></script>
-</body>
-</html>
-  
+<section class="container contact-layout section-space">
+    <div class="contact-copy">
+        <img class="contact-image" src="{% static 'images/safti-site.jpg' %}" alt="People working together as a team">
+        <p class="eyebrow eyebrow-dark"><span></span> Start a conversation</p>
+        <h2>Tell us how<br><em>we can help.</em></h2>
+        <p>Use the form to share your enquiry. Please include the best way to follow up with you.</p>
+        <div class="contact-note">
+            <span class="contact-note-icon" aria-hidden="true">✦</span>
+            <div><strong>Admissions enquiries</strong><p>Let us know which program or information you are interested in, and our team can follow up.</p></div>
+        </div>
+        <p class="form-demo-note">This form is a front-end demonstration and is not connected to a message service yet.</p>
+    </div>
+    <form class="contact-form" data-contact-form>
+        {% csrf_token %}
+        <div class="form-row">
+            <label for="contact-name">Your name</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="e.g. Alex Morgan" required>
+        </div>
+        <div class="form-row">
+            <label for="contact-email">Email address</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-row">
+            <label for="contact-topic">What is your enquiry about?</label>
+            <select id="contact-topic" name="topic" required>
+                <option value="" selected disabled>Select a topic</option>
+                <option>Admissions</option>
+                <option>Academic programs</option>
+                <option>General information</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="contact-message">Your message</label>
+            <textarea id="contact-message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+        </div>
+        <button class="button button-navy form-submit" type="submit">Prepare message <span aria-hidden="true">→</span></button>
+        <p class="form-status" data-form-message aria-live="polite"></p>
+    </form>
+</section>
+{% endblock %}
