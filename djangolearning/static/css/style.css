@@ -62,7 +62,8 @@ body {
 
 .site-hero {
   align-items: center;
-  background: linear-gradient(90deg, rgba(14, 35, 67, 0.82), rgba(14, 35, 67, 0.35)),
+  background:
+    linear-gradient(90deg, rgba(14, 35, 67, 0.82), rgba(14, 35, 67, 0.35)),
     url("../images/bg.jpg") center / cover;
   border-radius: 1rem;
   color: #fff;
@@ -490,7 +491,10 @@ body.college-site {
   min-height: 51px;
   padding: 0 21px;
   text-decoration: none;
-  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
 }
 
 .button:hover {
@@ -789,7 +793,10 @@ body.college-site {
   padding: 24px;
   position: relative;
   text-decoration: none;
-  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
 }
 
 .program-card:hover {
@@ -1229,7 +1236,13 @@ body.college-site {
   justify-content: space-between;
   min-height: 55px;
 }
-
+.user-form {
+  margin: 200px;
+  border: 3px solid red;
+  background: yellow;
+  padding: 10px;
+  text-align: center;
+}
 @media (max-width: 900px) {
   .hero-section {
     min-height: 530px;

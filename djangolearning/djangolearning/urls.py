@@ -28,4 +28,6 @@ urlpatterns = [
     path('homepage/', views.homepage, name='homepage'),
     path('contact/', views.contact, name='contact'),
     path('services/', views.services, name='services'),
+    path('user-form', views.userform)
+
 ]
