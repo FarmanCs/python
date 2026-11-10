@@ -3,37 +3,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Contact Us</title>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        <a href="services.html">Services</a> |
-        <a href="contact.html">Contact</a>
-    </nav>
+    <header class="site-header">
+        <a class="site-brand" href="/">My Website</a>
+        <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+        <nav class="site-menu" id="site-menu" aria-label="Main navigation">
+            <a href="/">Home</a>
+            <a href="/aboutus/">About</a>
+        </nav>
+    </header>
 
-    <h1>Contact Us</h1>
+    <main class="site-main">
+        <section class="site-panel">
+            <h1>Contact Us</h1>
+            <p>Feel free to contact us.</p>
+            <img class="site-card-image" src="{% static 'images/login.png' %}" alt="Contact support">
 
-    <p>Feel free to contact us.</p>
+            <form class="site-form">
+                <label>Name
+                    <input type="text" name="name" placeholder="Enter your name" required>
+                </label>
+                <label>Email
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                </label>
+                <label>Message
+                    <textarea name="message" placeholder="Write your message" required></textarea>
+                </label>
+                <button class="site-button" type="submit">Send Message</button>
+                <p data-form-message aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
 
-    <form>
-        <label>Name:</label>
-        <input type="text" placeholder="Enter your name">
-        <br><br>
-
-        <label>Email:</label>
-        <input type="email" placeholder="Enter your email">
-        <br><br>
-
-        <label>Message:</label>
-        <textarea placeholder="Write your message"></textarea>
-        <br><br>
-
-        <button type="submit">Send Message</button>
-    </form>
-
+    <footer class="site-footer">© <span data-current-year></span> My Website</footer>
+    <script src="{% static 'js/site.js' %}" defer></script>
 </body>
 </html>
   

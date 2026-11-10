@@ -4,36 +4,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage </title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Homepage</title>
 </head>
 
 <body>
-  <h2>Welcome to the homepage</h2>
+  <header class="site-header">
+    <a class="site-brand" href="/">My Website</a>
+    <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+    <nav class="site-menu" id="site-menu" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/aboutus/">About</a>
+    </nav>
+  </header>
 
-  {%if name %}
-  <p>Hello, {{ name }}!</p>
-  {% else %}
-  <p>Hello, Guest!</p>
-  {% endif %}
-  {% for course in courses %}
-  <p>{{ course }}</p>
-  {% endfor %}
+  <main class="site-main">
+    <section class="site-hero">
+      <div>
+        <h1>Welcome to the homepage</h1>
+        {% if name %}
+        <p>Hello, {{ name }}!</p>
+        {% else %}
+        <p>Hello, Guest!</p>
+        {% endif %}
+      </div>
+      <img class="site-hero-image" src="{% static 'images/profile1.jpg' %}" alt="Profile portrait">
+    </section>
 
+    <section class="site-panel">
+      <h2>Courses</h2>
+      <div class="site-grid">
+        {% for course in courses %}
+        <article class="site-card">{{ course }}</article>
+        {% endfor %}
+      </div>
 
-  {% for student in students %}
-  <p>{{ student.name }}, Age: {{ student.age }}</p>
-  <p>your are enrolled in the following courses: {{ courses|join:", " }}</p>
-  {% endfor %}
+      <h2>Students</h2>
+      <div class="site-grid">
+        {% for student in students %}
+        <article class="site-card">
+          <strong>{{ student.name }}</strong>
+          <p>Age: {{ student.age }}</p>
+          <p>Enrolled in: {{ courses|join:", " }}</p>
+        </article>
+        {% endfor %}
+      </div>
 
-  {%for n in numbers %}
-  {%if n > 100%}
-  <p>the Number is grater than 100 and the numbers are: {{n}}</p>
-  {%else%}
-  <p>the numbers is less then 100: which are {{n}}</p>
-  {%endif%}
+      <h2>Numbers</h2>
+      <ul>
+        {% for n in numbers %}
+        {% if n > 100 %}
+        <li>{{ n }} is greater than 100.</li>
+        {% else %}
+        <li>{{ n }} is less than or equal to 100.</li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
 
-  <p class=""></p>
-  {% endfor %}
+  <footer class="site-footer">© <span data-current-year></span> My Website</footer>
+  <script src="{% static 'js/site.js' %}" defer></script>
 </body>
 
 </html>
