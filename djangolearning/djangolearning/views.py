@@ -1,5 +1,7 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from os import name
+
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect, render
 import logging
 
 
@@ -33,25 +35,42 @@ def contact(request):
     return render(request, "contact.html")
 
 
-def aboutus(request):
-    return render(request, "aboutus.html")
+def aboutus(request, value):
+    return render(request, "aboutus.html", {"value": value})
 
 
-def detail(request, id):
-    return HttpResponse(f"This is detail page for id: {id}")
-
-
-logger = logging.getLogger(__name__)
+def detail(request, value):
+    return render(request, "aboutus.html", {"value": value})
 
 
 def userform(request):
-
+    # data = {}
     try:
-        name = request.GET.get("name")
-        email = request.GET.get("email")
-        print(name, email)
-        print(3 + 3)
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        data = {"name": name, "email": email}
+        print(f"Name: {name}, Email: {email}")
+        url = "about-detail/{}/"
+        print(f"Redirecting to: {url.format(name)}")
+        return redirect(url.format(name))
     except:
         pass
 
-    return render(request, "user_form.html")
+    return render(request, "user_form.html", data)
+
+
+def calculater(request):
+    if request.method == "POST":
+        num1 = int(request.POST.get("num1", 0))
+        num2 = int(request.POST.get("num2", 0))
+        opr = request.POST.get("opr")
+        if opr == "add":
+            result = num1 + num2
+        elif opr == "subtract":
+            result = num1 - num2
+        elif opr == "multiply":
+            result = num1 * num2
+        elif opr == "divide":
+            result = num1 / num2 if num2 != 0 else 0
+        return render(request, "calculater.html", {"result": result})
+    return render(request, "calculater.html")
